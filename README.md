@@ -39,8 +39,35 @@ optional arguments:
 For example:
 
 ```
-$> python main.py  -d DOMAIN --threads 10  --max-clicks 5 --min-clicks=1 --forever --proxy-file proxies.txt --timeout 60 --max-offset 180
+$> python main.py  -d news.ycombinator.com --threads 10  --max-clicks 5 --min-clicks=1 --forever --proxy-file proxies.txt --timeout 60 --max-offset 10
+[168.187.239.10:80] Found 195 links
+[168.187.239.10:80] Visiting now: https://news.ycombinator.com/item?id=13897826
+[168.187.239.10:80] Found 49 links
+[168.187.239.10:80] Visiting now: https://news.ycombinator.com/user?id=grammr
+[168.187.239.10:80] Found 12 links
+[168.187.239.10:80] Visiting now: https://news.ycombinator.com/ask
+[168.187.239.10:80] Found 165 links
+[168.187.239.10:80] Visiting now: https://news.ycombinator.com/vote?id=13895140&how=up&goto=ask
+[94.46.177.99:80] Found 195 links
+[94.46.177.99:80] Visiting now: https://news.ycombinator.com/from?site=hackernoon.com
+[94.46.177.99:80] Found 165 links
+[94.46.177.99:80] Visiting now: https://news.ycombinator.com/item?id=13887634
+[94.46.177.99:80] Found 21 links
+[94.46.177.99:80] Visiting now: https://news.ycombinator.com/login?goto=item%3Fid%3D13887634
+[94.46.177.99:80] Found 1 links
+[94.46.177.99:80] Visiting now: https://news.ycombinator.com/forgot
+[94.23.60.121:80] Found 195 links
+[94.23.60.121:80] Visiting now: https://news.ycombinator.com/vote?id=13901950&how=up&goto=news
+[94.23.60.121:80] Found 1 links
+[94.23.60.121:80] Visiting now: https://news.ycombinator.com/forgot
+[94.23.60.121:80] Found 0 links
+[94.23.60.121:80] Visiting now: previous page
+[94.23.60.121:80] Found 1 links
+[94.23.60.121:80] Visiting now: https://news.ycombinator.com/forgot
+[173.212.203.122:3128] Found 195 links
+[173.212.203.122:3128] Visiting now: https://news.ycombinator.com/item?id=13902864
 ```
+
 ## Setup
 
 Requirements:
