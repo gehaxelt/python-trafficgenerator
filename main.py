@@ -8,6 +8,7 @@ import json
 import random
 import time
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 
 # Get path to locally installed phantomjs 
 MAINPYPATH      = os.path.dirname(os.path.realpath(__file__))
@@ -77,6 +78,7 @@ def generate_traffic(args):
                                     desired_capabilities={'phantomjs.page.settings.resourceTimeout': args.timeout*1000, "phantomjs.page.settings.userAgent": random.choice(USER_AGENTS)},
                                     service_args=settings,
                                     )
+        driver.set_page_load_timeout(args.timeout)
         driver.set_window_size(1024, 768)
 
         # Our initial url is just the domain.
@@ -106,12 +108,14 @@ def generate_traffic(args):
                     driver.get(next_link.get_attribute("href"))
                 except:
                     continue
+        except TimeoutException:
+            continue
         except:
             pass
-
-        # Do we want to do this forever?
-        if not args.forever:
-            break
+        finally:
+            # Do we want to do this forever?
+            if not args.forever:
+                break
 
         # Wait before generating traffic again.
         time.sleep(random.randint(args.max_offset, args.max_offset*2))
