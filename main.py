@@ -38,7 +38,7 @@ args = parser.parse_args()
 if args.proxy_file != "" and not os.path.isfile(args.proxy_file):
     print "File {} does not exist.".format(args.proxy_file)
     sys.exit(1)
-else:
+elif args.proxy_file != "" and os.path.isfile(args.proxy_file):
     # Read proxies from the proxy file. Only http proxies are supported for now.
     PROXIES = list(map(lambda x: x.strip(), open(args.proxy_file, "r").readlines()))
 
@@ -96,15 +96,15 @@ def generate_traffic(args):
 
                     # Wait before our next click. We don't want to be too fast.
                     time.sleep(random.randint(0, args.max_offset*1000)/1000)
-                    print "[{}] Found {} links".format(ip, len(links))
+                    print "[{}][{}] Found {} links".format(time.strftime("%H:%M:%S", time.gmtime()), ip, len(links))
                     # If there are no links, we go back.
                     if len(links) == 0:
-                        print "[{}] Visiting now: {}".format(ip, "previous page")
+                        print "[{}][{}] Visiting now: {}".format(time.strftime("%H:%M:%S", time.gmtime()), ip, "previous page")
                         driver.back()
                         continue
                     # Ok, there is a new link to click. Visit it.
                     next_link = random.choice(links)
-                    print "[{}] Visiting now: {}".format(ip, next_link.get_attribute("href"))
+                    print "[{}][{}] Visiting now: {}".format(time.strftime("%H:%M:%S", time.gmtime()), ip, next_link.get_attribute("href"))
                     driver.get(next_link.get_attribute("href"))
                 except:
                     continue
